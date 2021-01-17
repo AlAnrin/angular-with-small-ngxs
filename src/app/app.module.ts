@@ -11,13 +11,17 @@ import { PlantsComponent } from './plants/plants.component';
 import { RootComponent } from './root/root.component';
 import {MaterialModule} from "./material.module";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import { PaintsComponent } from './paints/paints.component';
+import { JewelryComponent } from './jewelry/jewelry.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     PlantsComponent,
-    RootComponent
+    RootComponent,
+    PaintsComponent,
+    JewelryComponent
   ],
   imports: [
     MaterialModule,
