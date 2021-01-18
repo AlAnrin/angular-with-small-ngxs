@@ -1,3 +1,23 @@
-<div>
-  <img [src]="getImage()">
+<div class="center-h4 center-h4-small">
+  Рисую маслом, люблю и холсты, и бумагу.
 </div>
+
+<div *ngFor="let paint of paints; index as i">
+  <ng-container *ngIf="i === paintNumber">
+    <div class="container">
+      <button mat-icon-button (click)="onClick(false)"
+              [disabled]="canClick(false)">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      <div class="spacer"></div>
+      <img [src]="getImageSrc(i)">
+      <div class="spacer"></div>
+      <button mat-icon-button (click)="onClick(true)"
+              [disabled]="canClick(true)">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+    </div>
+  </ng-container>
+</div>
+<mat-progress-bar mode="determinate" color="accent" matTooltip="{{paintNumber + 1}} / {{countAllPaints + 1}}"
+                  [value]="((paintNumber + 1) / (countAllPaints + 1)) * 100"></mat-progress-bar>

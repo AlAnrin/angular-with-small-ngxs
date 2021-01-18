@@ -15,13 +15,13 @@ export class PlantsComponent implements OnInit, OnDestroy {
 
   constructor(private store: Store) {
     this.plantNumber$ = this.store.select(RootState.getPlantChangeValue);
-    this.plantNumberSub =this.plantNumber$.subscribe(index => {
+    this.plantNumberSub = this.plantNumber$.subscribe(index => {
       this.plantNumber = index;
     })
   }
 
   onClick() {
-    this.store.dispatch(new PlantChangeAction())
+    this.store.dispatch(new PlantChangeAction(this.plantNumber + 1))
       .subscribe((data: {state: IState}) => {
       console.log(data);
       this.plantNumber = data.state.plantNumber;

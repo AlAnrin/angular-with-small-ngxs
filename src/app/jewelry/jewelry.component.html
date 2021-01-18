@@ -1,1 +1,24 @@
-<p>jewelry works!</p>
+<div class="center-h4 center-h4-small">
+  Делаю украшения из эпоксидной смолы.
+  А еще я вязать могу)
+</div>
+
+<div *ngFor="let jewelry of jewelries; index as i">
+  <ng-container *ngIf="i === jewelryNumber">
+    <div class="container">
+      <button mat-icon-button (click)="onClick(false)"
+              [disabled]="canClick(false)">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      <div class="spacer"></div>
+      <img [src]="getImageSrc(i)">
+      <div class="spacer"></div>
+      <button mat-icon-button (click)="onClick(true)"
+              [disabled]="canClick(true)">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+    </div>
+  </ng-container>
+</div>
+<mat-progress-bar mode="determinate" color="accent" matTooltip="{{jewelryNumber + 1}} / {{countAllJewelry}}"
+                  [value]="((jewelryNumber + 1) / (countAllJewelry)) * 100"></mat-progress-bar>
